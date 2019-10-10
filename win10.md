@@ -19,3 +19,7 @@ slmgr -ato
 slmgr -dlv
 ```
 
+位置：
+```
+D:\迅雷下载\cn_windows_10_enterprise_ltsc_2019_x64_dvd_9c09ff24.iso
+```
