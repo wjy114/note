@@ -37,5 +37,39 @@ Press F5 on your keyboard.
 #### VS
 open Visual Studio 2017 Community (or any other of course) and under the Visual C++ – Windows Desktop tab create a new Windows Desktop Wizard project. 向导。->empty
 
+put file in project !!
 
+add in header and source 
 
+#### Set
+
+- linker —> input ->the first
+debug -> XXXd.lib
+release XXX.lib
+
+```
+fltkd.lib
+wsock32.lib
+comctl32.lib
+fltkjpegd.lib
+fltkimagesd.lib
+```
+
+- linker->system->windows 
+
+?? if Chinese wrong add uif8(no)
+
+??if 11
+Double click the error message in your errors tab, the x.H file will open in Visual Studio 2017 Community as a new tab, if not go to your External Dependencies folder in your Solution Explorer within Visual Studio and look for the file manually and open it. As you may notice already, the errors will be underlined in curly red.
+
+Now go to line 28, between # include “Enumerations.H” on line 27 and # ifdef WIN32 and include # define WIN32 like this:
+
+```
+# include “Enumerations.H”
+# define WIN32
+# ifdef WIN32
+```
+
+#### Bjarne Stroustrup’s header and .cpp files.
+
+At FLTK file
