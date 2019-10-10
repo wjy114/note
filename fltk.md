@@ -72,4 +72,15 @@ Now go to line 28, between # include “Enumerations.H” on line 27 and # ifdef
 
 #### Bjarne Stroustrup’s header and .cpp files.
 
-At FLTK file
+At FF
+
+#### can't open pdb file
+
+dll->pdb符号文件
+
+http://c.biancheng.net/view/474.html
+1) 选择菜单栏中的“调试  --> 选项”，
+2) 弹出“选项”对话框后，选择“调试 --> 常规”，在右侧选项栏中勾选“启用源服务器支持”（包含的 3 个子选项不用勾选），此时会弹出一个安全警报框，选择“是”
+3) 还是在“选项”对话框中，选择“调试 --> 符号”，在右侧选项栏中勾选“Microsoft符号服务器”，此时会弹出一个提示对话框，点击“确定”即可。同时，对于缓存符号的目录，选择C:\Users
+4) 确定之后，重新运行你的程序，首次运行时，由于编译器会加载所有动态链接库的pdb文件，可能会等到几秒钟。程序运行后，之前输出窗口中的“无法查找或打开pdb文件”的提示不见了
+
