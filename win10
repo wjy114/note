@@ -1,0 +1,16 @@
+#### WIN10 企业版 LTSC 
+
+Windows + R以打开运行窗口。
+输入powershell然后按下回车键。
+切换管理员模式
+
+```
+Start-Process powershell -Verb runAs 
+```
+
+```
+slmgr -ipk M7XTQ-FN8P6-TTKYV-9D4CC-J462D
+slmgr -skms kms.03k.org
+slmgr -ato
+slmgr -dlv
+```
