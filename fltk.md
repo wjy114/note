@@ -1,1 +1,41 @@
 ### FLTK 1.3.4-2 + VS2017 community
+
+#### Go to: http://www.fltk.org/index.php get fltk-1.3.4-2-source.tar.gz 
+
+#### Compiling and building fltk-1.3.4 from source
+
+```
+C:\Users\fltk-1.3.4-2-source\fltk-1.3.4-2\ide\VisualC2010
+```
+
+Open (double-click) fltk.sln.
+
+Visual Studio 2017 Community will open, and ask you if you want to update the files.
+
+Right-click the demo solution file. Click on Set as StartUp Project.
+
+Click on Build and Build Solution.
+
+Output window shows Build: 79 succeeded…
+
+Make sure to set Debug mode.
+
+Press F5 on your keyboard. 
+
+to Release mode
+
+Press F5 on your keyboard.
+
+#### Copy
+
+- \fltk-1.3.4-2-source and copy the Fl folder into your include folder (in my case): C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include
+
+- \fltk-1.3.4-2-source\lib) and copy all 14 .lib files (Note that there are pairs of 2, one of them named with a “d” for debug in the end). And paste them into your Visual Studio 2017 lib folder (in my case: C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\lib\x64andx86). 
+
+-  Go to: the fluid folder in your fltk source folder \fltk-1.3.4-1-source\fltk-1.3.4-1\fluid and copy ``fluid.exe`` and ``fluidd.exe`` into your Visual Studio 2017 bin folder  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin).
+
+#### VS
+open Visual Studio 2017 Community (or any other of course) and under the Visual C++ – Windows Desktop tab create a new Windows Desktop Wizard project. 向导。->empty
+
+
+
