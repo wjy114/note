@@ -84,3 +84,5 @@ http://c.biancheng.net/view/474.html
 3) 还是在“选项”对话框中，选择“调试 --> 符号”，在右侧选项栏中勾选“Microsoft符号服务器”，此时会弹出一个提示对话框，点击“确定”即可。同时，对于缓存符号的目录，选择C:\Users
 4) 确定之后，重新运行你的程序，首次运行时，由于编译器会加载所有动态链接库的pdb文件，可能会等到几秒钟。程序运行后，之前输出窗口中的“无法查找或打开pdb文件”的提示不见了
 
+https://blog.csdn.net/lq496387202/article/details/79792893
+https://blog.csdn.net/blackwoodcliff/article/details/84574489
