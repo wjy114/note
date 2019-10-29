@@ -25,3 +25,10 @@
     64 bit division 结果保存在x中；余数保存在返回结果中。
     
  schedule_timeout()可以使当前任务睡眠指定的jiffies 之后重新被调度执行
+
+
+### ndctl
+
+sudo ndctl des 
+lsblk
+sudo ndctl create-nameapace --mde fsdax --map dev -f --size 129G
