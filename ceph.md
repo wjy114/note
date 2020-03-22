@@ -17,7 +17,7 @@ connecting to host: ddst-PowerEdge-R8204 resulted in errors: HostNotFound
 
 vim /etc/hosts
 
-### 3. ssh 警告
+### 3.ssh 警告
 
 ssh name 时有警告
 Warning: the ECDSA host key for '[hostname]:port' differs from the key for the IP address '[ipaddress]:port'
@@ -30,5 +30,8 @@ Matching host key in /home/dsl/.ssh/known_hosts:147
 [ddst-PowerEdge-R8205][INFO  ] Running command: sudo ceph --version
 [ddst-PowerEdge-R8205][DEBUG ] ceph version 12.2.12 (1436006594665279fe734b4c15d7e08c13ebd777) luminous (stable)
 
+### 4.osd active
+
+chown ceph:ceph /var/local/osd0
 
 https://blog.csdn.net/don_chiang709/article/details/91511828#1.%20%5Bceph_deploy%5D%5BERROR%20%5D%20RuntimeError%3A%20Failed%20to%20execute%20command%3A%20env%20DEBIAN_FRONTEND%3Dnoninteractive%20DEBIAN_PRIORITY%3Dcritical%20apt-get%20--assume-yes%20-q%20update
