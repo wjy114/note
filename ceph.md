@@ -1,5 +1,5 @@
  
-###1.deb
+### 1.deb
 
 ```[ceph_deploy][ERROR ] RuntimeError: Failed to execute command: env DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get --assume-yes -q update```
 
@@ -11,6 +11,19 @@ to
 
 https://download.ceph.com/debian-luminous
 
-###2.hostname
+### 2.hostname
 
 connecting to host: ddst-PowerEdge-R8204 resulted in errors: HostNotFound 
+
+vim /etc/hosts
+
+### 3. ssh 警告
+
+ssh name 时有警告
+Warning: the ECDSA host key for '[hostname]:port' differs from the key for the IP address '[ipaddress]:port'
+Offending key for IP in /home/dsl/.ssh/known_hosts:5
+Matching host key in /home/dsl/.ssh/known_hosts:147
+
+解决：ssh-keygen -R （有警告的ip）
+
+
