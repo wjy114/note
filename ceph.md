@@ -26,4 +26,7 @@ Matching host key in /home/dsl/.ssh/known_hosts:147
 
 解决：ssh-keygen -R （有警告的ip）
 
-
+//
+[ddst-PowerEdge-R8205][INFO  ] Running command: sudo ceph --version
+[ddst-PowerEdge-R8205][DEBUG ] ceph version 12.2.12 (1436006594665279fe734b4c15d7e08c13ebd777) luminous (stable)
+//
