@@ -42,6 +42,74 @@ auth_cluster_required = cephx
 auth_service_required = cephx
 auth_client_required = cephx
 
+### 5. ceph -s 后密钥输出
+
+2020-03-23 22:54:32.327545 7f0a0b394700 -1 auth: unable to find a keyring on /etc/ceph/ceph.client.admin.keyring,/etc/ceph/ceph.keyring,/etc/ceph/keyring,/etc/ceph/keyring.bin,: (2) No such file or directory
+2020-03-23 22:54:32.327575 7f0a0b394700 -1 monclient: ERROR: missing keyring, cannot use cephx for authentication
+2020-03-23 22:54:32.327579 7f0a0b394700  0 librados: client.admin initialization error (2) No such file or directory
+[errno 2] error connecting to the cluster
+
+解决
+
+cp 目录keyring 到 /etc/ceph/
+
+sudo chmod +r /etc/ceph/ceph.client.admin.keyring
+
+### 6.
+检查集群健康状态
+
+[root@ceph-3 ceph-ceph-3]# ceph -s
+  cluster:
+    id:     ea64cc3d-7b7a-4676-b993-df5d71fd7f77
+    health: HEALTH_WARN
+            no active mgr
+ 
+  services:
+    mon: 3 daemons, quorum ceph-1,ceph-2,ceph-3
+    mgr: no daemons active
+    osd: 3 osds: 3 up, 3 in
+ 
+  data:
+    pools:   0 pools, 0 pgs
+    objects: 0 objects, 0 bytes
+    usage:   3164 MB used, 296 GB / 299 GB avail
+    pgs:    
+
+ 可以看到health为警告状态，提示我们mgr没有active
+
+为mgr创建用户
+
+ ceph  auth get-or-create mgr.ceph-1 mon 'allow profile mgr' osd 'allow *' mds 'allow *'
+
+查看是否创建mgr用户成功
+
+ceoh auth list
+
+mgr.ceph-1
+ key: AQB//PZZbTAzJRAAEakxeHeehHHwbo/AiWTQFg==
+ caps: [mds] allow *
+ caps: [mon] allow profile mgr
+ caps: [osd] allow *
+
+创建mgr的秘钥目录，看启动服务看log时说需要这个文件夹，那么我创建这个文件夹，这里我提前创建，将秘钥导入到里边
+
+mkdir -p  /var/lib/ceph/mgr/ceph-ceph-1/
+
+导入秘钥：
+
+ceph auth get-or-create mgr.ceph-1 -o /var/lib/ceph/mgr/ceph-ceph-1/keyring
+
+也可以把这两步合成一步：
+
+ceph  auth get-or-create mgr.ceph-1 mon 'allow profile mgr' osd 'allow *' mds 'allow *'  -o /var/lib/ceph/mgr/ceph-ceph-1/keyring
+
+授权：
+
+chown -R ceph:ceph /var/lib/ceph/mgr/ceph-ceph-1/*
+
+启动mgr服务：
+
+systemctl restart ceph-mgr@ceph-1
 
 
  1926  sudo iptables -A INPUT -i ib0 -p tcp -s 10.0.0.1/24 --dport 6789 -j ACCEPT
