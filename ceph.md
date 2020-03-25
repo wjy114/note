@@ -174,5 +174,88 @@ systemctl restart ceph-mgr@ceph-1
  2097  ceph auth get-key client.admin | base64
 
 
+mkdir ceph-cluster
+cd ceph-cluster/
+ceph-deploy new 1
+osd pool default size = 2
+ceph-deploy install 1 1 2 3
+ceph-deploy mon create-initial
+
+ssh c2
+sudo mkdir /var/local/osd0
+sudo chown -R ceph:ceph /var/local/osd0
+exit
+
+ssh c3
+sudo mkdir /var/local/osd1
+sudo chown -R ceph:ceph /var/local/osd1
+exit
+
+ceph-deploy osd prepare c2:/var/local/osd0 c3:/var/local/osd1
+
+ssh c2
+sudo chown -R ceph:ceph /var/lib/ceph
+exit
+
+ssh c3
+sudo chown -R ceph:ceph /var/lib/ceph
+exit
+
+ceph-deploy osd activate c2:/var/local/osd0 c3:/var/local/osd1
+
+ceph-deploy admin 1 1 2 3
+
+ssh 1 2 3
+sudo chmod +r /etc/ceph/ceph.client.admin.keyring
+
+ceph osd tree
+
+ceph  auth get-or-create mgr.ceph-1 mon 'allow profile mgr' osd 'allow *' mds 'allow *'
+ceph auth list
+mkdir -p /var/lib/ceph/mgr/ceph-ceph-1
+sudo mkdir -p /var/lib/ceph/mgr/ceph-ceph-1
+sudo ceph auth get-or-create mgr.ceph-1 -o /var/lib/ceph/mgr/ceph-ceph-1/keyring
+sudo chown -R ceph:ceph /var/lib/ceph/mgr/
+sudo systemctl restart ceph-mgr@ceph-1
+ceph -s
+
+生成mgr密钥
+ceph auth get-or-create mgr.{hostname} mon 'allow *' osd 'allow *'
+2、创建mgr数据目录
+mkdir /var/lib/ceph/mgr/ceph-{hostname}/
+3、保存密钥文件
+ceph auth get mgr.{hostname} -o /var/lib/ceph/mgr/ceph-{hostname}/keyring
+4、启动mgr
+使用 ceph-mgr -i {hostname} 可以对mgr进行启动，例如： ceph-mgr -i node1 。启动之后通过ceph -s 可以看到mgr active的信息。
+
+
+ssh 1 "ceph auth get-key client.admin | base64"
+ssh 1 "mkdir -p /var/lib/ceph/mds/ceph-$MDS"
+ssh 1"chown -R ceph:ceph /var/lib/ceph"
+
+
+ssh $MDS ceph osd pool create fs_db_data 128 
+ssh $MDS ceph osd pool create fs_db_metadata 64
+
+ceph osd lspools
+
+ceph-deploy --overwrite-conf mds create $MDS
+
+# 挂载需要的验证秘钥
+MOUNTKEY=`ssh $MDS "ceph auth get-key client.admin"`
+# 节点ip
+MONIP=`ssh $MDS cat /etc/ceph/ceph.conf |grep mon_host|cut -d "=" -f2|sed 's?,?:6789,?g'`
+# 挂载目录
+mkdir /mycephfs
+
+# 开始挂载
+mount -t ceph $MONIP:6789:/ /mycephfs -o name=admin,secret=$MOUNTKEY
+复制代码
+ 
+
+查看挂载情况
+
+复制代码
+root@jqb-node128:~/cephinstall# df -hT
 
 https://blog.csdn.net/don_chiang709/article/details/91511828#1.%20%5Bceph_deploy%5D%5BERROR%20%5D%20RuntimeError%3A%20Failed%20to%20execute%20command%3A%20env%20DEBIAN_FRONTEND%3Dnoninteractive%20DEBIAN_PRIORITY%3Dcritical%20apt-get%20--assume-yes%20-q%20update
