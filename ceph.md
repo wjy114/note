@@ -306,5 +306,27 @@ sudo apt-get install libnuma-dev
 Unable to find the libaio-devel header fi
 sudo apt install libaio-dev
 
+ceph
+sudo apt-get install libsnappy1 libsnappy-dev
+
+sudo apt install libleveldb-dev
+
+sudo apt-get install libblkid-dev
+
+sudo apt-get install libudev-dev
+
+sudo apt-get install libexpat-dev
+
+sudo apt install libkeyutils-dev
+
+no suitable crypto library found
+
+
+
+
+
+
+
+
 
 
