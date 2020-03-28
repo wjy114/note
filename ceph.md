@@ -298,3 +298,13 @@ mount -t ceph $MONIP:6789:/ /mycephfs -o name=admin,secret=$MOUNTKEY
 root@jqb-node128:~/cephinstall# df -hT
 
 https://blog.csdn.net/don_chiang709/article/details/91511828#1.%20%5Bceph_deploy%5D%5BERROR%20%5D%20RuntimeError%3A%20Failed%20to%20execute%20command%3A%20env%20DEBIAN_FRONTEND%3Dnoninteractive%20DEBIAN_PRIORITY%3Dcritical%20apt-get%20--assume-yes%20-q%20update
+
+git xio
+
+Unable to find the numactl-devel header files
+sudo apt-get install libnuma-dev
+Unable to find the libaio-devel header fi
+sudo apt install libaio-dev
+
+
+
