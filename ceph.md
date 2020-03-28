@@ -319,7 +319,13 @@ sudo apt-get install libexpat-dev
 
 sudo apt install libkeyutils-dev
 
-no suitable crypto library found
+sudo apt-get install libcrypto++-dev
+
+sudo apt-get install libboost-regex1.62-dev
+
+sudo apt-get install libboost-thread-dev
+
+sudo apt-get install libboost-all-dev
 
 
 
