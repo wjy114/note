@@ -327,6 +327,9 @@ sudo apt-get install libboost-thread-dev
 
 sudo apt-get install libboost-all-dev
 
+CXXFLAGS="-I/opt/accelio/include" CFLAGS="-I/opt/accelio/include" LDFLAGS="-L/opt/accelio/lib" ./configure --prefix=/opt/ceph --enable-xio --without-fuse --without-tcmalloc --without-libatomic-ops --without-libxfs
+
+
 
 
 
