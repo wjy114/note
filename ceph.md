@@ -336,6 +336,24 @@ sudo apt-get install libatomic-ops-dev
 
 CXXFLAGS="-I/opt/accelio/include" CFLAGS="-I/opt/accelio/include" LDFLAGS="-L/opt/accelio/lib" ./configure --prefix=/opt/ceph --enable-xio  --without-tcmalloc 
 
+sudo apt-get install libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev
+sudo apt-get install libssl-dev -y
+sudo apt-get install libevent-dev -y
+sudo apt-get install libtool
+sudo add-apt-repository ppa:bitcoin/bitcoin
+sudo apt-get update
+sudo apt-get install libdb4.8-dev libdb4.8++-dev
+sudo make -j64
+sudo apt-get install -y python-setuptools
+
+yum install libunwind-devel
+
+wget https://github.com/gperftools/gperftools/releases/download/gperftools-2.2.1/gperftools-2.2.1.tar.gz
+tar -zxvf gperftools-2.2.1.tar.g
+cd gperftools-2.2.1
+./configure
+make
+make install
 
 
 
