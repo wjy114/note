@@ -356,6 +356,18 @@ make
 make install
 
 
+   22  sudo apt-get install python-rados
+   23  sudo apt-get install librados-dev
+   24  ceph -v
+   25  sudo apt-get update
+   26  sudo apt-get install python-pip
+   27  y
+   28  yls
+   29  ls
+   30  sudo pip install PrettyTable
+
+
+
 
 
 
