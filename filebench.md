@@ -6,3 +6,8 @@ filebench -f fileserver.f
 
 sudo numactl --physcpubind=+18-35,54-71 fio fio-read-1
 
+export PATH="$PATH:/usr/local/bin"
+
+source /etc/profile
+
+source ~/.bashrc
