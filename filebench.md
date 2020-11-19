@@ -1,4 +1,7 @@
 
+sudo yum install libtool
+sudo yum install bison
+sudo yum install flex
 sudo
 ``echo 0 > /proc/sys/kernel/randomize_va_space``
 
