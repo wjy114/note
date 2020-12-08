@@ -1,0 +1,41 @@
+在/etc/yum.repos.d/mongodb-org-3.6.repo的文件中写入一下内容
+
+[mongodb-org-3.6]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.6/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-3.6.asc
+2.在shell中运行命令进行安装
+sudo yum install -y mongodb-org
+3.启动服务
+sudo service mongod start
+
+sudo yum install java-devel
+从http://maven.apache.org/download.cgi下载MVN
+
+wget http://ftp.heanet.ie/mirrors/www.apache.org/dist/maven/maven-3/3.1.1/binaries/apache-maven-3.1.1-bin.tar.gz
+sudo tar xzf apache-maven-*-bin.tar.gz -C /usr/local
+cd /usr/local
+sudo ln -s apache-maven-* maven
+sudo vi /etc/profile.d/maven.sh
+将以下内容添加到 maven.sh
+
+export M2_HOME=/usr/local/maven
+export PATH=${M2_HOME}/bin:${PATH}
+重新加载bash并测试mvn
+
+bash
+mvn -version
+
+
+数据库位置：/usr/bin/mongod
+root执行echo never > /sys/kernel/mm/transparent_hugepage/enabled
+numactl --interleave=all ./bin/mongod  --dbpath=/root/nova/
+
+Run YCSB:
+# cd /home/jingyu/nfs/nova-testscripts/YCSB/ycsb-0.5.0
+# ./bin/ycsb load mongodb -s -P workloads/workloada -threads 16
+
+
+sudo killall mongod
