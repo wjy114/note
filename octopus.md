@@ -56,6 +56,22 @@ sudo make clean
 
 sudo cmake ..
 
+
+/home/jingyu/cmake-3.9.2/Source/cmSystemTools.cxx: In static member function ‘static void cmSystemTools::FindCMakeResources(const char*)’:
+/home/jingyu/cmake-3.9.2/Source/cmSystemTools.cxx:2061:13: error: ‘CMAKE_BOOTSTRAP_BINARY_DIR’ was not declared in this scope
+   exe_dir = CMAKE_BOOTSTRAP_BINARY_DIR "/bin";
+             ^
+/home/jingyu/cmake-3.9.2/Source/cmSystemTools.cxx:2061:40: error: expected ‘;’ before string constant
+   exe_dir = CMAKE_BOOTSTRAP_BINARY_DIR "/bin";
+                                        ^
+/home/jingyu/cmake-3.9.2/Source/cmSystemTools.cxx:2121:28: error: ‘CMAKE_BOOTSTRAP_SOURCE_DIR’ was not declared in this scope
+   cmSystemToolsCMakeRoot = CMAKE_BOOTSTRAP_SOURCE_DIR;
+                            ^
+gmake: *** [cmSystemTools.o] Error 1
+---------------------------------------------
+Error when bootstrapping CMake:
+
+
 sudo make -j8
 
 sudo ./dmfs
