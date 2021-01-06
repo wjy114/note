@@ -3,9 +3,9 @@
 ### server:
 mkdir /mnt/nfs-server 
 
-sudo mkfs.ext4 /dev/pmem12
+sudo mkfs.ext4 /dev/pmem7
 
-sudo mount -o dax /dev/pmem12 /mnt/nfs-server 
+sudo mount -o dax /dev/pmem7 /mnt/nfs-server 
 
 vim /etc/exports 添加
  
