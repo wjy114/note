@@ -1,4 +1,7 @@
 额外查看cmake 版本3.3加
+
+yum install gcc-c++  
+
 sudo ./bootstrap --prefix=/usr/local
 
 sudo make
