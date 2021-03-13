@@ -13,3 +13,8 @@ scl enable devtoolset-8 bash
 
 gcc -v
 显示为 gcc version 8.3.1 20190311 (Red Hat 8.3.1-3) (GCC)
+
+sudo yum install devtoolset-7
+想要访问 GCC 7，你需要使用软件集合工具scl，启动一个新的 shell：
+
+scl enable devtoolset-7 bash
